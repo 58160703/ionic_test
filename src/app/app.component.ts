@@ -10,6 +10,7 @@ import { PageTwoPage } from '../pages/page-two/page-two';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { CoursesPage } from '../pages/courses/courses';
+import { NewsPage } from '../pages/news/news';
 
 
 @Component({
@@ -29,12 +30,12 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'หน้าหลัก', component: TabPage },
+      { title: 'ข่าว', component: NewsPage },
       { title: 'หน้าสอง', component: PageTwoPage },
       { title: 'เกี่ยวกับฉัน', component: AboutPage },
       { title: 'ติดต่อฉัน', component: ContactPage },
       { title: 'แผนที่', component: MapPage },
       { title: 'คอส', component: CoursesPage }
-    
     ];
 
   }
