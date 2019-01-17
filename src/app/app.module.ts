@@ -15,6 +15,7 @@ import { MapPage } from '../pages/map/map';
 import { CoursesPage } from '../pages/courses/courses'
 import { CoursedetailPage } from '../pages/coursedetail/coursedetail';
 import { YoutubePage } from '../pages/youtube/youtube';
+import { NewsPage } from '../pages/news/news';
 
 import { CoursesProvider } from '../providers/courses-service';
 import { NewsServiceProvider } from '../providers/news-service/news-service';
@@ -30,7 +31,8 @@ import { NewsServiceProvider } from '../providers/news-service/news-service';
     MapPage,
     CoursesPage,
     CoursedetailPage,
-    YoutubePage
+    YoutubePage,
+    NewsPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { NewsServiceProvider } from '../providers/news-service/news-service';
     MapPage,
     CoursesPage,
     CoursedetailPage,
-    YoutubePage
+    YoutubePage,
+    NewsPage
   ],
   providers: [
     StatusBar,
