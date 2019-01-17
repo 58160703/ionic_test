@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
+
+import { NewsServiceProvider } from '../../providers/news-service/news-service';
+import { News } from '../../model/news';
+import { Subscription } from 'rxjs/Subscription';
+
 
 /**
  * Generated class for the NewsPage page.
@@ -14,12 +19,46 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'news.html',
 })
 export class NewsPage {
+  news: Array<News>;
+  sub: Subscription;
+  errorMessage: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private newServ: NewsServiceProvider,private loadCtrl:LoadingController) {
+  }
+  ionViewWillEnter() {
+    this.getNews();
+  }
+  ionViewWillLeave() {
+    this.sub.unsubscribe(); //พอเรากลับมันก็จะคืนข้อมูล
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NewsPage');
+  
+  private getNews() {
+    let loading = this.loadCtrl.create({
+    content: 'กำลังโหลดข้อมูล...',
+    spinner: 'dots'
+  });
+  loading.present();
+  
+  this.sub = this.newServ.getNews().subscribe( 
+    (res) => this.news = res,
+    (error) => {
+      this.errorMessage = <any> error,
+      loading.dismiss()
+    },
+    () => loading.dismiss()
+  );
+}
+  private doRefresh(refresher) {
+    this.sub = this.newServ.getNews().subscribe( 
+      (res) => this.news = res,
+      (error) => {
+        this.errorMessage = <any> error,
+       refresher.complete()
+      },
+      () => refresher.complete()
+    );
+      
   }
-
 }
