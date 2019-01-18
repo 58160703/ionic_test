@@ -28,9 +28,10 @@ export class AuthServiceProvider {
       'password': password
     }; //ชุดนี้จะส่งให้ backend
 
-    return this.http.post(`${this.apiUrl}/insert_user.php`, body, myHeader)
+    return this.http.post(`${this.apiUrl}/api/insert_user.php`, body, myHeader)
       .map((res: Response) => <FeedBack[]>res.json()).catch(this.handleError);
     //post ไป 3อย่าง อันแรกเป็น URL ที่เราจะไป ตัวที่ 2 body จะเป็นการบอกว่าเราส่ง body อะไร ไป ส่งข้อมูลอะไรไป ตัวที่ 3 เป็น headers ต้อง import เข้ามาก่อนแล้วประกาศค่า ให้เก็บ
+    // res: Response กลับมาเป็น res.json() เก็บใน FeedBack[] ส่งกลับไป
   }
   private handleError(error : any) {
     return Observable.throw(error.json() || 'เกิดข้อผิดพลาดจาก server');

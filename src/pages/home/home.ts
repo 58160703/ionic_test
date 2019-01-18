@@ -3,7 +3,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ContactPage } from '../contact/contact';
-
+import { SignupPage } from '../signup/signup';
 
 @Component({
   selector: 'page-home',
@@ -34,7 +34,7 @@ export class HomePage {
   ];
 
     
-  constructor(public navCtrl: NavController) { 
+  constructor(public navCtrl: NavController) {
     
   }
   openContact() {
@@ -42,6 +42,10 @@ export class HomePage {
     this.navCtrl.push(ContactPage, {
       companyName: this.company,  //ส่งข้อมูลไปด้วย 2 ตัว
       companyWebsite: 'http://A-host.co.th' //เรียกแบบนี้ว่าการ pass ข้อมูล  หน้า contact ก็รับข้อมูล
-    });     
+    });
   }
+  openSignup() {
+    this.navCtrl.push(SignupPage);
+  }
+
 }

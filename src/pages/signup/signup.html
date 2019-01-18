@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>signup</ion-title>
+    <ion-title>ลงทะเบียน</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,4 +15,27 @@
 
 <ion-content padding>
 
+   <!-- ทำฟอร์ม ลงทะเบียน -->
+   <form novalidate [formGroup]="myForm" (ngSubmit)="signup()">
+    <!-- (ngSubmit)="signup() ไม้ต้องมี parameter  อะไรใส่เข้าไป myForm ผูกกับ .ts อยู่อ้างถึงได้เลย -->
+    <!-- form group เท่านั้นถ้าเป็น REACTIVE form -->
+  <ion-list>
+        <ion-item>
+          <ion-input type="text" placeholder="ชื่อ-สกุล" formControlName="fullname"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+            <ion-input type="email" placeholder="E-mail" formControlName="email"></ion-input>
+          </ion-item>
+
+        <ion-item>
+          <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <button ion-button block type="submit" [disabled]="!myForm.valid" >สร้างบัญชีใหม่</button>
+        </ion-item>
+
+      </ion-list>
+    </form>   
 </ion-content>
