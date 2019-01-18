@@ -1,0 +1,33 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Log In </ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+  
+     <form novalidate #myForm="ngForm" (ngSubmit)="login(myForm.value)">
+      
+    <ion-list>
+    
+          <ion-item>
+              <ion-input type="email" placeholder="E-mail" name="email" #email ="ngModel" ngModel  required  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"></ion-input>
+
+            </ion-item>
+  
+          <ion-item>
+            <ion-input type="password" placeholder="Password" name="password" #password ="ngModel" ngModel required minlength="3"></ion-input>
+          </ion-item>
+        
+          <ion-item>
+            <button ion-button block type="submit" [disabled]="!myForm.form.valid" >เข้าสู่ระบบ</button> 
+           
+          </ion-item>
+  
+        </ion-list>
+      </form>   
+  </ion-content>
+  
