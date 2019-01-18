@@ -1,12 +1,19 @@
 <!-- Show View Part  -->
 <ion-header>
-  <ion-navbar>
+  
+  <!-- เดี่ยวจะทำการ add หน้า login เข้าไป  โดยเปลี่ยนจาก navbar เป็น toolbar-->
+  
+  <ion-toolbar>  
 <button ion-button menuToggle>
   <ion-icon name="menu"> </ion-icon>
 </button>
-
     <ion-title> Ionic Blank</ion-title>
-  </ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openSignup()" >
+        <ion-icon name="key"></ion-icon>
+      </button>
+      </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
