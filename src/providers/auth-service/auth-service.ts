@@ -33,8 +33,43 @@ export class AuthServiceProvider {
     //post ไป 3อย่าง อันแรกเป็น URL ที่เราจะไป ตัวที่ 2 body จะเป็นการบอกว่าเราส่ง body อะไร ไป ส่งข้อมูลอะไรไป ตัวที่ 3 เป็น headers ต้อง import เข้ามาก่อนแล้วประกาศค่า ให้เก็บ
     // res: Response กลับมาเป็น res.json() เก็บใน FeedBack[] ส่งกลับไป
   }
+
+  public signup2(email: string, password: string): Observable<boolean> {
+    //เอาไว้ใช้เชื่อมกับ auth0 
+    let myHeader = new Headers();
+    myHeader.append('Content-Type', 'application/json');
+    
+    // let body = {
+  
+    //   'client_id': '0OVVUjO3zMqomiwMPsT5x8TCtilYjFDQ',
+    //   'email': email,
+    //   'password': password,
+    //   'connection': 'Username-Password-Authentication'
+
+    // }; 
+    //ใช้ของไอดีตัวเองไม่ได้ จึงขอติดไว้ก่อน 
+
+    let body = {
+      'client_id': '40xmiqS5eCvJrWDsu6OwgJAblJTgq6Oq',
+      'email': email,
+      'password': password,
+      'connection': 'Username-Password-Authentication' //ชื่อ db 
+    }
+    //https://warintorn.auth0.com/dbconnections/signup
+    return this.http.post(`https://codingthailand.auth0.com/dbconnections/signup`, body, myHeader)
+      .map((res: Response) => {
+        let feedback = res.json();
+        if (feedback) {
+          return true;
+        } else {
+          return false;
+        }
+      }).catch(this.handleError2);
+  }
+
   private handleError(error : any) {
     return Observable.throw(error.json() || 'เกิดข้อผิดพลาดจาก server');
+}  private handleError2(error:any) {
+  return Observable.throw(error.json().description || 'เกิดข้อผิดพลาดจาก Server');
 }
-
 }
