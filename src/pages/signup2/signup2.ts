@@ -44,8 +44,10 @@ export class Signup2Page {
         }
       }, error => { 
         let errorMessage = <any>error //ใช้แค่ แค่ในนี้ ก็ประกาศแค่ let 
+        console.log(errorMessage);
         let alert = this.alertCtrl.create({
-          title: errorMessage,
+          title: "Error",
+          message: JSON.stringify(errorMessage),
           buttons: ['ตกลง']
         });
         alert.present();
