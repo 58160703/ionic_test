@@ -20,6 +20,7 @@ import { SignupPage } from '../pages/signup/signup'
 
 import { CoursesProvider } from '../providers/courses-service';
 import { NewsServiceProvider } from '../providers/news-service/news-service';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
  
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { NewsServiceProvider } from '../providers/news-service/news-service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CoursesProvider,
-    NewsServiceProvider
+    NewsServiceProvider,
+    AuthServiceProvider
   ]
 })
 export class AppModule {}
