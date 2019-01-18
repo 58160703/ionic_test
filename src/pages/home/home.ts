@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ContactPage } from '../contact/contact';
 import { SignupPage } from '../signup/signup';
-
+import { Signup2Page } from '../signup2/signup2';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -47,5 +47,7 @@ export class HomePage {
   openSignup() {
     this.navCtrl.push(SignupPage);
   }
-
+  openSignup2() {
+    this.navCtrl.push(Signup2Page);
+  }
 }
