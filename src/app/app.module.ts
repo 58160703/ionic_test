@@ -23,7 +23,12 @@ import { LoginPage } from '../pages/login/login';
 import { CoursesProvider } from '../providers/courses-service';
 import { NewsServiceProvider } from '../providers/news-service/news-service';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
- 
+import { IonicStorageModule } from '@ionic/storage';
+//import { Storage } from '@ionic/storage';
+
+//ติดไว้ก่อน
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -44,7 +49,8 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -67,9 +73,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CoursesProvider,
-    NewsServiceProvider,
-    AuthServiceProvider
+    CoursesProvider,NewsServiceProvider,AuthServiceProvider//,Storage
   ]
 })
 export class AppModule {}
